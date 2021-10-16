@@ -1,0 +1,67 @@
+.parent {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+
+    align-items: center;
+    justify-content: center;
+    gap: 40px;;
+    height: 100%;
+}
+
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: aliceblue;
+    height: 100vh;
+    margin: 0;
+}
+
+.parent div {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    text-align: center;  
+    font-weight: 800;
+    width: 150px;
+    height: 150px;
+    background-color: aquamarine;
+    border-radius: 10%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 3s;
+}
+
+.parent div:nth-child(2n +1) {
+    background-color: fuchsia;
+}
+
+.parent div:nth-child(2n) {
+    flex-grow: 2;
+    order: 2;
+}
+
+.parent div:hover {
+    transform: rotate(180deg) scale(1.2);
+    cursor: pointer;
+    width:200px;
+    height: 200px;
+}
+
+.parent div:hover::after {
+    content: "👌";
+    font-size: 4em;
+}
+
+.parent div:hover span {
+    display: none;
+}
+
+@media only screen and (min-width: 768px) {
+
+    .parent {
+        background-color: green;
+    /* Bei größeren Bildschirmen ändert sich die Darstellung
+    von Spalten zu Zeilen */
+    }
+
+}
