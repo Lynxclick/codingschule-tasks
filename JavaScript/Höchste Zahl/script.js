@@ -1,4 +1,4 @@
-const arr = [1, 12, 6, 92]
+/* const arr = [1, 12, 6, 92]
 
 // Größte Zahl mit Funktion
 function highest(zahlenfolge) {
@@ -26,3 +26,22 @@ for (let n = arr.length; n>1; n--) { // arr.length gibt die Anzahl der Elemente 
 }
 console.log("---");
 console.log(arr);
+*/
+
+/*const arr = [1, 11, 13, 12, 6, 92]
+
+arr.sort().reverse();
+
+console.log(arr);
+*/
+
+const arr = [1, 2, 3, 4, 6, 7, 8, 9, 10]
+
+function isEven(value) {
+    if (value%2 == 0)
+     return true;
+      else
+     return false;
+   }
+
+console.log(arr.filter(isEven));
