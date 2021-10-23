@@ -2,6 +2,8 @@
 const red = document.querySelector(".red");
 const green = document.querySelector(".green");
 
+[red.innerText, green.innerText] = [green.innerText, red.innerText]
+
 // red.style.backgroundColor = "green";
 // green.style.backgroundColor = "red";
 
@@ -12,7 +14,7 @@ const green = document.querySelector(".green");
 // red.innerText = green.innerText;
 // green.innerText = text;
 
-setInterval(farbwechsel, 2000);
+/* setInterval(farbwechsel, 2000);
 
 function farbwechsel() {
     red.classList.toggle("green");
@@ -26,3 +28,4 @@ function farbwechsel() {
     green.classList.toggle("green");
     green.classList.toggle("red");
 }
+*/
