@@ -13,13 +13,15 @@ async function weatherUpdate() {
 
     let timeValue = new Date(); /*data["sys"]["timezone"]*/
     document.querySelector(".time").innerText = timeValue;
-    setTimeout(weatherUpdate, 10000);
+    
 
-    let imageValue = data["weather"]["0"]["icon"]
+    let imageValue = data.weather[0].icon;  // ["weather"]["0"]["icon"]
     document.querySelector(".image").innerHTML = imageValue;
    
     console.log(data)
     // console.log(Intl.DateTimeFormat().resolvedOptions().timeValue)
 }
+
+setTimeout(weatherUpdate, 10000);
 
 weatherUpdate();
