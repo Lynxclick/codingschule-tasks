@@ -1,8 +1,8 @@
 const express = require('express')
 const app = express()
 const port = 3000
-
-let User = []
+const User = []
+const fetch = require('cross-fetch');
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
