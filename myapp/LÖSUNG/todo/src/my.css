@@ -1,0 +1,16 @@
+body {
+    background-color: #113044;
+}
+
+.headline {
+    color: #ff5c5c;
+}
+
+.todo {
+    border-radius: 5px;
+    width: 300px;
+    padding: 5px 10px;
+    box-shadow: white 0px 4px 8px -2px, white 0px 0px 0px 1px;
+    background-color: white;
+    margin-bottom: 10px;
+}
