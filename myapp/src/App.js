@@ -4,7 +4,7 @@ import './design.css';
 
 
 function App() {
-  return (<h1 className="test">Überschrift</h1>);
+  return (<h1 className="ueberschrift">Überschrift</h1>);
   //document.getElementsBy("Überschrift").className = "test;"
 }
 
