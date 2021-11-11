@@ -23,10 +23,11 @@ body {
 h2 {
     font-weight: bold;
     font-size: 2rem;
+    text-shadow: 2px 2px 20px black;
   }
   p {
     font-family: 'Reenie Beanie';
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   ul,li{
     list-style:none;

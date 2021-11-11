@@ -1,6 +1,8 @@
 import React from 'react'
 import './design.css';
 
+const todos = ["Einkaufen", "Kino"]
+
 function Todo() {
     return (
         //<div className="todolist">
@@ -16,43 +18,43 @@ function Todo() {
             <li>
                 <a href="#" contenteditable>
                 <h2>09:00 Uhr</h2>
-                <p>Text Content #2</p>
+                <p>Gitarrenunterricht</p>
                 </a>
             </li>
             <li>
                 <a href="#" contenteditable>
                 <h2>10:00 Uhr</h2>
-                <p>Text Content #3</p>
+                <p>Einkaufen</p>
                 </a>
             </li>
             <li>
                 <a href="#" contenteditable>
                 <h2>Donnerstag</h2>
-                <p>Text Content #4</p>
+                <p>Team Meeting</p>
                 </a>
             </li>
             <li>
                 <a href="#" contenteditable>
                 <h2>Freitag</h2>
-                <p>Text Content #5</p>
+                <p>Kino</p>
                 </a>
             </li>
             <li>
                 <a href="#" contenteditable>
                 <h2>Samstag</h2>
-                <p>Text Content #6</p>
+                <p>Essen gehen</p>
                 </a>
             </li>
             <li>
                 <a href="#" contenteditable>
                 <h2>Sonntag</h2>
-                <p>Text Content #7</p>
+                <p>Wandern gehen</p>
                 </a>
             </li>
             <li>
                 <a href="#" contenteditable>
                 <h2>WICHTIG</h2>
-                <p>Text Content #8</p>
+                <p>In die Sauna</p>
                 </a>
             </li>
         </ul>
