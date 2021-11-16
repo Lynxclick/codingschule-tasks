@@ -2,6 +2,9 @@ import React, {useState, useEffect} from 'react';
 import './my.css';
 import Todo from './Todo';
 import Input from './Input';
+import {createContext} from 'react';
+
+export const Context = createContext();
 
 /*var todos = [
   {id: 1, name: "einkaufen"}, 
@@ -37,20 +40,22 @@ function App() {
 
 
   return (
-    <div className="app">
-      <h1 className="headline">Meine Todo App</h1>
-      <Input todos={todos} setTodos={setTodos}/>
-      {
-        todos.map((todo) => <Todo todo={todo} todos={todos} setTodos={setTodos} key={todo.id}/>)
-        /* 
-        todos.map(
-          function anzeigen(Kaugummi) {
-            return <Todo todo={Kaugummi} />
-          })
-        */
-      }
-      
-    </div>
+    <Context.Provider value={{todos, setTodos}}>
+      <div className="app">
+        <h1 className="headline">Meine Todo App</h1>
+        <Input todos={todos} setTodos={setTodos}/>
+        {
+          todos.map((todo) => <Todo todo={todo} todos={todos} setTodos={setTodos} key={todo.id}/>)
+          /* 
+          todos.map(
+            function anzeigen(Kaugummi) {
+              return <Todo todo={Kaugummi} />
+            })
+          */
+        }
+        
+      </div>
+    </Context.Provider>
     
   );
 }
