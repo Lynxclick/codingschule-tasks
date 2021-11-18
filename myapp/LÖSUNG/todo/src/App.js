@@ -3,6 +3,8 @@ import './my.css';
 import Todo from './Todo';
 import Input from './Input';
 import {createContext} from 'react';
+import styled from "styled-components";
+
 
 export const Context = createContext();
 
@@ -41,8 +43,8 @@ function App() {
 
   return (
     <Context.Provider value={{todos, setTodos}}>
-      <div className="app">
-        <h1 className="headline">Meine Todo App</h1>
+      <AppContainer>
+        <Headline className="headline">Meine Todo App</Headline>
         <Input todos={todos} setTodos={setTodos}/>
         {
           todos.map((todo) => <Todo todo={todo} todos={todos} setTodos={setTodos} key={todo.id}/>)
@@ -54,10 +56,24 @@ function App() {
           */
         }
         
-      </div>
+      </AppContainer>
     </Context.Provider>
     
   );
 }
 
 export default App;
+
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 5px;
+  width: 50vw;
+  margin: auto;
+`
+
+const Headline = styled.h1`
+  color: #ff5c5c;
+`

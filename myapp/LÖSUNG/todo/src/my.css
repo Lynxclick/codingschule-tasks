@@ -3,6 +3,7 @@ body {
     font-family: 'Courier New', Courier, monospace;
 }
 
+/*
 .app {
     display: flex;
     flex-direction: column;
@@ -12,6 +13,7 @@ body {
     width: 50vw;
     margin: auto;
 }
+*/
 
 .headline {
     color: #ff5c5c;
