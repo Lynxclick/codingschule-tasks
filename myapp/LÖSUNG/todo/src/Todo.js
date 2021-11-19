@@ -1,13 +1,24 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './my.css';
 import { FaTrash, FaCheckCircle } from "react-icons/fa";
+import styled from 'styled-components';
+import {Context} from './App';
+
+import {
+    BrowserRouter,
+    Routes,
+    Route
+    } from "react-router-dom";
 
 
-function Todo({todo, todos, setTodos}) {
+
+
+function Todo({todo}) {   //  Es wurden öfter "todos" und "setTodos" entfernt. Wieso ? A: Weil die im Context stehen als "Value"
+    const {todos, setTodos} = useContext(Context);
+
 
     function deleteTodo() {
-        console.log(todo.id)
-
+       
         const result = todos.filter(deleteFilter);
 
         function deleteFilter(element) {
@@ -19,15 +30,38 @@ function Todo({todo, todos, setTodos}) {
     }
 
     return (
-        <div className="todo">
-            <div className="text">{todo.name}</div>
-            <div className="icon"><FaCheckCircle /></div>
-            <div className="icon" onClick={deleteTodo}><FaTrash /></div>
-        </div>
+        <TodoContainer>
+           
+            <TodoText>{todo.name}</TodoText>
+         
+            <TodoIcon><FaCheckCircle /></TodoIcon>
+            <TodoIcon onClick={deleteTodo}><FaTrash /></TodoIcon>
+        </TodoContainer>
     )
 }
 
 export default Todo
+
+const TodoContainer = styled.div`
+    border-radius: 5px;
+    width: 300px;
+    padding: 5px 10px;
+    box-shadow: #ff5c5c 0px 4px 8px -2px, #ff5c5c 0px 0px 0px 1px;
+    background-color: #113044;
+    margin-bottom: 10px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`
+
+const TodoText = styled.div`
+    flex-grow: 1;
+`
+
+const TodoIcon = styled.div`
+    margin: 1px 2px;
+`
 
 
 

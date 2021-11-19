@@ -1,5 +1,7 @@
 import React, {useRef, useContext} from 'react'
+import styled from 'styled-components';
 import {Context} from './App';
+
 
 
 
@@ -30,11 +32,41 @@ function Input() {
     }
     
     return (
-        <div className="inputContainer">
-            <input ref={eingabeFeld} className="inputField" onKeyDown={neueAufgabeKeyDown} placeholder="Neue Aufgabe"/>
-            <div className="inputButton" onClick={neueAufgabe}>Hinzufügen</div>
-        </div>
+        <InputContainer>
+            <InputField ref={eingabeFeld} onKeyDown={neueAufgabeKeyDown} placeholder="Neue Aufgabe"/>
+            
+            <InputButton onClick={neueAufgabe}>Hinzufügen</InputButton>
+        </InputContainer>
     )
 }
 
 export default Input
+
+const InputContainer = styled.div`
+    display: flex;
+    width: 300px;
+    margin-bottom: 10px;
+    justify-content: space-around;
+`
+const InputField = styled.input`
+    outline: none;
+`
+const InputButton = styled.div`
+    background-color: #ff5c5c;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+
+    &:hover {
+        color: #113044;
+    }
+`
+
+
+

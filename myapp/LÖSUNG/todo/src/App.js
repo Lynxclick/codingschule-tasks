@@ -1,9 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import './my.css';
-import Todo from './Todo';
-import Input from './Input';
 import {createContext} from 'react';
 import styled from "styled-components";
+import Home from './Home';
+import Todo from './Todo';
+
+
+
+  import { useParams } from 'react-router';
+
+  import { Link } from 'react-router-dom';
+  
+
+// <Link to="todo/:todoId">Todo-Name</Link>
 
 
 export const Context = createContext();
@@ -18,6 +27,7 @@ export const Context = createContext();
 function App() {
   const [todos, setTodos] = useState([]);
   const LOCAL_STORAGE_KEY = "todos"
+  const params = useParams();
 
   
   //const handleRemoveItem = (e) => {
@@ -42,22 +52,17 @@ function App() {
 
 
   return (
-    <Context.Provider value={{todos, setTodos}}>
-      <AppContainer>
-        <Headline className="headline">Meine Todo App</Headline>
-        <Input todos={todos} setTodos={setTodos}/>
-        {
-          todos.map((todo) => <Todo todo={todo} todos={todos} setTodos={setTodos} key={todo.id}/>)
-          /* 
-          todos.map(
-            function anzeigen(Kaugummi) {
-              return <Todo todo={Kaugummi} />
-            })
-          */
-        }
+      <Context.Provider value={{todos, setTodos}}>
+        <AppContainer>
+        <Headline>Meine Todo App</Headline>
         
-      </AppContainer>
-    </Context.Provider>
+        <Link to="todo/:todoId">Todo-Name</Link>
+
+         
+          
+        </AppContainer>
+      </Context.Provider>
+    
     
   );
 }
