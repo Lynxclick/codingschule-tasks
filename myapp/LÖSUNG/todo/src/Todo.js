@@ -3,18 +3,15 @@ import './my.css';
 import { FaTrash, FaCheckCircle } from "react-icons/fa";
 import styled from 'styled-components';
 import {Context} from './App';
-
-import {
-    BrowserRouter,
-    Routes,
-    Route
-    } from "react-router-dom";
+import {Link, useParams} from 'react-router-dom';
 
 
 
 
 function Todo({todo}) {   //  Es wurden öfter "todos" und "setTodos" entfernt. Wieso ? A: Weil die im Context stehen als "Value"
     const {todos, setTodos} = useContext(Context);
+    const {todoId} = useParams();
+    
 
 
     function deleteTodo() {
@@ -29,10 +26,17 @@ function Todo({todo}) {   //  Es wurden öfter "todos" und "setTodos" entfernt. 
        localStorage.setItem("todos", JSON.stringify(result))
     }
 
+    if(!todo) {
+        todo = todos.find(element => String(element.id) === todoId);
+    }
+
     return (
         <TodoContainer>
            
-            <TodoText>{todo.name}</TodoText>
+            <TodoText>
+                <Link to={"todo/" + todo.id}>{todo.name}</Link>
+            </TodoText>
+            
          
             <TodoIcon><FaCheckCircle /></TodoIcon>
             <TodoIcon onClick={deleteTodo}><FaTrash /></TodoIcon>

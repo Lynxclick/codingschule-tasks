@@ -5,9 +5,12 @@ import styled from "styled-components";
 import Home from './Home';
 import Todo from './Todo';
 
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  } from "react-router-dom";
 
-
-  import { useParams } from 'react-router';
 
   import { Link } from 'react-router-dom';
   
@@ -27,7 +30,7 @@ export const Context = createContext();
 function App() {
   const [todos, setTodos] = useState([]);
   const LOCAL_STORAGE_KEY = "todos"
-  const params = useParams();
+ 
 
   
   //const handleRemoveItem = (e) => {
@@ -52,16 +55,20 @@ function App() {
 
 
   return (
-      <Context.Provider value={{todos, setTodos}}>
-        <AppContainer>
-        <Headline>Meine Todo App</Headline>
-        
-        <Link to="todo/:todoId">Todo-Name</Link>
-
-         
-          
-        </AppContainer>
-      </Context.Provider>
+  
+    <BrowserRouter>
+              <Context.Provider value={{todos, setTodos}}>
+                  <AppContainer>
+                        <Headline>Meine Todo App</Headline>
+                          <Link to="todo/:todoId">Todo-Name</Link>
+                            <Routes>
+                              <Route path="/" element={<Home />} />
+                              <Route path="todo/:todoId" element={todos.length > 0 ? <Todo /> : null} />
+                            </Routes>    
+                  </AppContainer>
+              </Context.Provider>
+  </BrowserRouter>
+  
     
     
   );
