@@ -69,7 +69,3 @@ const TodoIcon = styled.div`
 
 
 
-// Testkommentar 123
-// Nächster Testkommentag
-
-
