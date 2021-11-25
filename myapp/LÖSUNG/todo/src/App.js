@@ -12,7 +12,7 @@ import {
   } from "react-router-dom";
 
 
-  import { Link } from 'react-router-dom';
+ // import { Link } from 'react-router-dom';
   
 
 // <Link to="todo/:todoId">Todo-Name</Link>
@@ -29,6 +29,7 @@ export const Context = createContext();
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const [todoCount, setTodoCount] = useState(0)
   //const LOCAL_STORAGE_KEY = "todos"
  
 
@@ -38,8 +39,22 @@ function App() {
   //   updateList(list.filter(item => item.name !== name));
   // };
 
- 
 
+ useEffect(() => {
+   const storage = localStorage.getItem("todos")
+
+   if (storage) {
+     setTodos(JSON.parse(localStorage.getItem("todos")))
+   }
+ }, [])
+
+ useEffect(() => {
+   setTodoCount(todos.length)
+   localStorage.setItem("todos", JSON.stringify(todos))
+ }, [todos])
+
+
+/*
   useEffect(() => {
     if (localStorage.getItem("todos") === null)
       {localStorage.setItem("todos", JSON.stringify(todos))}
@@ -47,7 +62,7 @@ function App() {
       {setTodos(JSON.parse(localStorage.getItem("todos")))}
       
 }, []);
-
+*/
 
 
 
@@ -60,7 +75,8 @@ function App() {
               <Context.Provider value={{todos, setTodos}}>
                   <AppContainer>
                         <Headline>Meine Todo App</Headline>
-                          <Link to="todo/:todoId">Todo-Name</Link>
+                        <TodoCount>Offene Aufgaben: {todoCount}</TodoCount>
+                          
                             <Routes>
                               <Route path="/" element={<Home />} />
                               <Route path="todo/:todoId" element={todos.length > 0 ? <Todo /> : null} />
@@ -88,4 +104,8 @@ const AppContainer = styled.div`
 
 const Headline = styled.h1`
   color: #ff5c5c;
+`
+
+const TodoCount = styled.div`
+  margin-bottom: 10px;
 `
