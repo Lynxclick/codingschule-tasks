@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import './my.css';
+//import './my.css';
 import { FaTrash, FaCheckCircle } from "react-icons/fa";
 import styled from 'styled-components';
 import {Context} from './App';
@@ -66,6 +66,15 @@ const TodoText = styled.div`
 const TodoIcon = styled.div`
     margin: 1px 2px;
 `
-
-
+/*const StyledLink = styled(Link)`
+    &:link {
+        color: white;
+        text-decoration: none; 
+    }
+    &:visited {
+        color: white;
+        text-decoration: none; 
+    }
+`
+*/
 
