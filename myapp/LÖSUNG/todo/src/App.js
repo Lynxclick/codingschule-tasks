@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, createContext} from 'react';
 import './my.css';
-import {createContext} from 'react';
 import styled from "styled-components";
 import Home from './Home';
 import Todo from './Todo';
@@ -9,7 +8,10 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  Link
   } from "react-router-dom";
+
+  import { FaHome } from "react-icons/fa"
 
 
  // import { Link } from 'react-router-dom';
@@ -71,19 +73,22 @@ function App() {
 
   return (
   
-    <BrowserRouter>
-              <Context.Provider value={{todos, setTodos}}>
+    <Context.Provider value={{todos, setTodos}}>
+        <BrowserRouter>
+              
                   <AppContainer>
                         <Headline>Meine Todo App</Headline>
                         <TodoCount>Offene Aufgaben: {todoCount}</TodoCount>
                           
                             <Routes>
                               <Route path="/" element={<Home />} />
-                              <Route path="todo/:todoId" element={todos.length > 0 ? <Todo /> : null} />
-                            </Routes>    
+                              <Route path="todo/:todoId" element={<Todo />} />
+                              {/* todos.length > 0 ? <Todo /> : null */}
+                            </Routes>  
+                            <Footer to="/"><FaHome /></Footer>  
                   </AppContainer>
-              </Context.Provider>
-  </BrowserRouter>
+              </BrowserRouter>
+  </Context.Provider>
   
     
     
@@ -108,4 +113,23 @@ const Headline = styled.h1`
 
 const TodoCount = styled.div`
   margin-bottom: 10px;
+`
+
+const Footer = styled(Link)`
+margin: 5px;
+
+&:link {
+  color: #ff5c5c;
+  /*text-decoration: none; */
+}
+
+&:visited {
+  color: #ff5c5c;
+  /*text-decoration: none; */
+}
+
+&:hover {
+  color: black;
+}
+
 `
