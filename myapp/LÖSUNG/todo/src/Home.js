@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import Todo from './Todo';
+import TodoElement from './TodoElements';
 import Input from './Input';
 
 import {Context} from './App'
@@ -15,7 +15,7 @@ function Home() {
             
              <Input /> {/* <Input todos={todos} setTodos={setTodos}/>  <-- Das war vorher. Warum keine SetTodos mehr ? */}
         {
-          todos.map((todo) => <Todo todo={todo} key={todo.id}/>)
+          todos.map((todo) => <TodoElement todo={todo} key={todo.id}/>)
           /* 
           todos.map(
             function anzeigen(Kaugummi) {
