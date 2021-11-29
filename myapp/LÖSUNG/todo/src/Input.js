@@ -2,38 +2,38 @@ import React, {useRef, useContext} from 'react'
 import styled from 'styled-components';
 import {Context} from './App';
 
-
+import { v4 as uuidv4 } from 'uuid';
 
 
 
 function Input() {
     const eingabeFeld = useRef()
-    const value = useContext(Context)
+    const {todos, setTodos} = useContext(Context)
 
     function neueAufgabe() {
         console.log("Neue Aufgabe")
         console.log(eingabeFeld.current.value)
-        console.log(value.todos)
+        console.log(todos)
 
-        if (eingabeFeld.current.value !== "")
-        value.setTodos([...value.todos, {id: value.todos.length + 1, name: eingabeFeld.current.value}])
-        localStorage.setItem("todos", JSON.stringify
-        ([...value.todos, {id: value.todos.length + 1, name: eingabeFeld.current.value}]))
+        if (eingabeFeld.current.value !== "") {
+        setTodos([{id: uuidv4(), name: eingabeFeld.current.value, done: "false"}, ...todos ])
         //const test = localStorage.getItem("todos")          !Nur zum Debuggen!
 
         eingabeFeld.current.value = ""
+        }
     }
 
+
     function neueAufgabeKeyDown(event) {
-        console.log(event)
+        //console.log(event)
         if (event.keyCode === 13) {
             neueAufgabe()
         }
     }
     
     return (
-        <InputContainer>
-            <InputField ref={eingabeFeld} onKeyDown={neueAufgabeKeyDown} placeholder="Neue Aufgabe"/>
+        <InputContainer onKeyDown={neueAufgabeKeyDown}>
+            <InputField ref={eingabeFeld} placeholder="Neue Aufgabe"/>
             
             <InputButton onClick={neueAufgabe}>Hinzufügen</InputButton>
         </InputContainer>
