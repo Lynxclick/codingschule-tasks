@@ -1,16 +1,3 @@
-/*import React from 'react'
-
-function Footer() {
-    return (
-        <div>
-            Test
-        </div>
-    )
-}
-
-export default Footer
-*/
-
 import React from 'react'
 import styled from "styled-components";
 import Advert from './Advert';
@@ -18,9 +5,8 @@ import Advert from './Advert';
 function Footer() {
     return (
         <AppFooter>
-Footer
-<Advert/>
-
+            Footer
+            <Advert/>
         </AppFooter>
     )
 }

@@ -3,9 +3,10 @@ import React from 'react'
 function Advert() {
     return (
         <div>
-            Test
+            Werbung Platzhalter
         </div>
     )
 }
 
 export default Advert
+

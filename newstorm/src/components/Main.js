@@ -7,6 +7,7 @@ import Advert from './Advert';
 
 
 function Main() {
+    
     return (
         <AppMain>
             <Column1>
@@ -23,6 +24,7 @@ function Main() {
             </Column3>
         </AppMain>
     )
+ 
 }
 
 export default Main

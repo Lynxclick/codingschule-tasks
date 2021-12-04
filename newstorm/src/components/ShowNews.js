@@ -1,20 +1,5 @@
-/*
-import React from 'react'
-
-function ShowNews() {
-    return (
-        <div>
-            Test
-        </div>
-    )
-}
-
-export default ShowNews
-
-*/
-
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 function ShowNews() {
     return (
