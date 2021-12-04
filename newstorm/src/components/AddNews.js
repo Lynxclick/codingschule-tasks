@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Header() {
+function AddNews() {
     return (
         <div>
-            
+            Test
         </div>
     )
 }
 
-export default Header
+export default AddNews
