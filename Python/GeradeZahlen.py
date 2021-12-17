@@ -1,21 +1,19 @@
-Obergrenze = int(input("Nenne eine Obergrenze = "))
+
+import random
 
 
-#try:
-#    int(Obergrenze)
-#    it_is = True
-#except ValueError:
-#    it_is = False
 
-print (Obergrenze)
+try:
+        input= int(input("Nenne eine Obergrenze = "))
+except ValueError:
+        input = random.randint(1, 1000)
 
-Zahlenfolge = range(Obergrenze)
-    
-for Zahl in Zahlenfolge:
-    print(Zahl)
 
-if Zahl % 2 == 0:
-    print("Die Zahl " + Zahl + " ist gerade")
-else:
-    print("Die Zahl " + Zahl + " ist ungerade")
+
+
+for Zahl in range(input):
+    if Zahl % 2 == 0:
+        print("Die Zahl " + str(Zahl) + " ist gerade")
+    else:
+        print("Die Zahl " + str(Zahl) + " ist ungerade")
 
