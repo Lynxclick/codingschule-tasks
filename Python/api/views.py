@@ -3,6 +3,7 @@ from .models import Customer
 from .models import Post
 #from api.models import Expense
 from django.http import HttpResponse
+from django.core import serializers
 
 
 # Create your views here.
@@ -34,4 +35,12 @@ def api_new(request, name):
     new_post.save()
 
     return redirect('/')
+
+def api_get(request):
+    posts = Post.objects.all()
+    data = serializers.serialize("json", posts)
+
+    return HttpResponse(data, content_type="application/json")
+
+
 
