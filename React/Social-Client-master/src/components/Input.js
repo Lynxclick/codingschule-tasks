@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 
 import {useAppContext} from '../appContext'
@@ -10,7 +10,8 @@ function Input() {
     const [postText, setPostText] = useState()
 
     function savePost() {
-        addPost({author: "Demo", text: postText})
+//        addPost({author: "Demo", text: postText})
+        fetch("http://127.0.0.1:8000/new/Kane?text=" + postText)
         setPostText("")
     }
 

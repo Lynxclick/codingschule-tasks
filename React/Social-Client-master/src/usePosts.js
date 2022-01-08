@@ -11,6 +11,19 @@ import {useState, useEffect} from 'react'
 function usePosts() {
     const [posts, setPosts] = useState([])
 
+    useEffect(() => {
+        async function getPosts() {
+            // Abfrage der API (HTTP)
+            const owmURL = "http://127.0.0.1:8000/api2/posts"
+            const result = await fetch(owmURL);
+            // Parsen der JSON Informationen (Erzeugt ein Promise Objekt)
+            const data = await result.json()
+            //console.log(data)
+            setPosts(data)
+        }
+        setInterval(getPosts, 1000);
+    }, [])
+
     function addPost(newPost) {
         newPost.text !== "" && setPosts([ newPost, ...posts])
     }
