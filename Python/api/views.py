@@ -4,6 +4,9 @@ from .models import Post
 #from api.models import Expense
 from django.http import HttpResponse
 from django.core import serializers
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import PostSerializer
 
 
 # Create your views here.
@@ -41,6 +44,13 @@ def api_get(request):
     data = serializers.serialize("json", posts)
 
     return HttpResponse(data, content_type="application/json")
+
+@api_view()
+def api_view(request):
+    posts = Post.objects.all()
+    serializer = PostSerializer(posts, many=True)
+
+    return Response(serializer.data)
 
 
 
