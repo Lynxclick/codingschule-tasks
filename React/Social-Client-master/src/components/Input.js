@@ -9,9 +9,28 @@ function Input() {
     const [, addPost] = useAppContext()
     const [postText, setPostText] = useState()
 
+    // useEffect(() => {
+    //     async function writePosts() {
+    //         // Abfrage der API (HTTP)
+    //         const owmURL = "http://127.0.0.1:8000/api2/posts"
+    //         const result = await fetch(owmURL, {
+    //             method: 'POST',
+    //             body: JSON.stringify({customer: "Kane"})
+    //         });
+    //         // Parsen der JSON Informationen (Erzeugt ein Promise Objekt)
+    //         const data = await result.json()
+    //         //console.log(data)
+    //         setPostText(data)
+    //     }
+    //     writePosts();
+    // }, [])
+
     function savePost() {
 //        addPost({author: "Demo", text: postText})
-        fetch("http://127.0.0.1:8000/new/Kane?text=" + postText)
+        fetch("http://127.0.0.1:8000/api2/posts", {
+            method: 'POST',
+            body: JSON.stringify({author: "Kane", text: postText})
+        });
         setPostText("")
     }
 
