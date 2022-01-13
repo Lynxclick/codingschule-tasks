@@ -21,7 +21,7 @@ function usePosts() {
             //console.log(data)
             setPosts(data)
         }
-        setInterval(getPosts, 10000);
+        setInterval(getPosts, 5000);
     }, [])
 
     function addPost(newPost) {

@@ -29,6 +29,7 @@ function Input() {
 //        addPost({author: "Demo", text: postText})
         fetch("http://127.0.0.1:8000/api2/posts", {
             method: 'POST',
+            headers:{'content-type': 'application/json'},
             body: JSON.stringify({author: "Kane", text: postText})
         });
         setPostText("")
