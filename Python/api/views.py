@@ -1,3 +1,4 @@
+from multiprocessing.sharedctypes import Value
 from django.shortcuts import render, redirect
 from .models import Customer
 from .models import Post
@@ -48,11 +49,13 @@ def api_get(request):
 @api_view(['GET', 'POST'])
 def api_view(request):
 
+        
+
     if request.method == 'POST':
         # neuer Post
         # request.data
-        # new_post = Post()
-        # new_post.save()
+        new_post = Post(author=request.data["author"], text=request.data["text"])
+        new_post.save()
 
         posts = Post.objects.all()
         serializer = PostSerializer(posts, many=True)
@@ -62,8 +65,6 @@ def api_view(request):
         posts = Post.objects.all()
         serializer = PostSerializer(posts, many=True)   
         return Response(serializer.data)
-    
-    #return Response(serializer.data)
 
 
 
