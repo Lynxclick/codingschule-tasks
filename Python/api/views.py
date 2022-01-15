@@ -57,12 +57,13 @@ def api_view(request):
         new_post = Post(author=request.data["author"], text=request.data["text"])
         new_post.save()
 
-        posts = Post.objects.all()
-        serializer = PostSerializer(posts, many=True)
+        #posts = Post.objects.all()
+        posts = Post.objects.order_by("-created_at")
+        serializer = PostSerializer(posts, many=True) #serializer für Umwandlung in JSON
         return Response(serializer.data)
     elif request.method == 'GET':
         #Alle Posts laden
-        posts = Post.objects.all()
+        posts = Post.objects.order_by("-created_at")
         serializer = PostSerializer(posts, many=True)   
         return Response(serializer.data)
 
