@@ -1,18 +1,25 @@
+import {useState} from 'react'
 import styled from 'styled-components'
 
 import Main from './components/Main'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Login from './components/Login'
 
 import { AppContextProvider } from './appContext'
 
 function App() {
+  const [user, setUser] = useState()
   
   return (
     <AppContextProvider>
       <AppContainer>
         <Header />
-        <Main />
+        {user ?
+        <Main user={user} />
+        :
+        <Login setUser={setUser}/>
+        }
         <Footer />
       </AppContainer>
     </AppContextProvider>

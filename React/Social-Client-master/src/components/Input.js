@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 
+import App from "../App"
+
 import {useAppContext} from '../appContext'
 
 // Controlled Components
 
-function Input() {
+function Input({user}) {
     const [, addPost] = useAppContext()
     const [postText, setPostText] = useState()
+    //const [user] = useState()
 
     // useEffect(() => {
     //     async function writePosts() {
@@ -30,14 +33,15 @@ function Input() {
         fetch("http://127.0.0.1:8000/api2/posts", {
             method: 'POST',
             headers:{'content-type': 'application/json'},
-            body: JSON.stringify({author: "Kane", text: postText})
+            body: JSON.stringify({author: user, text: postText})
         });
         setPostText("")
     }
 
     return (
         <InputContainer>
-            <StyledTextarea maxlength="255" rows="4" placeholder="Was passiert heute?" value={postText} onChange={(e) => setPostText(e.target.value)} />
+            <StyledTextarea maxlength="255" rows="4" placeholder={"Hallo " + user + ", was passiert heute?"} 
+            value={postText} onChange={(e) => setPostText(e.target.value)} />
             <ButtonContainer>
                 <Button onClick={savePost}>Post</Button>
             </ButtonContainer>

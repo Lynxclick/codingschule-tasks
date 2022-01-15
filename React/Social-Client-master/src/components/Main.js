@@ -7,12 +7,12 @@ import Post from './Post'
 
 import { useAppContext } from '../appContext'
 
-function Main() {
+function Main({user}) {
     const [posts] = useAppContext()
    
     return  (
         <MainContainer>
-            <Input />
+            <Input user={user} />
             {posts.map(post => <Post key={post.id} post={post} />)}
         </MainContainer>
     )
