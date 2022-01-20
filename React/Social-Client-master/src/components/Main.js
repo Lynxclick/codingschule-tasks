@@ -8,7 +8,10 @@ import Post from './Post'
 import { useAppContext } from '../appContext'
 
 function Main({user}) {
-    const [posts] = useAppContext()
+    const {posts} = useAppContext()
+    const {token} = useAppContext()
+
+    console.log(token)
    
     return  (
         <MainContainer>

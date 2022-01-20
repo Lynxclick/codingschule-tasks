@@ -8,7 +8,7 @@ import {useAppContext} from '../appContext'
 // Controlled Components
 
 function Input({user}) {
-    const [, addPost] = useAppContext()
+    const {addPost} = useAppContext()
     const [postText, setPostText] = useState()
     //const [user] = useState()
 

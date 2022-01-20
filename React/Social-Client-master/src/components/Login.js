@@ -1,12 +1,14 @@
 import React, {useState, setState} from 'react'
 import styled from 'styled-components'
+import { useAppContext } from '../appContext'
 
 function Login({setUser}) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const {setToken} = useAppContext()
 
     async function handleLogin(e) {
-        setUser(username)
+        
 
         const result = await fetch('http://127.0.0.1:8000/api/token/', {
             method: 'POST',
@@ -14,13 +16,24 @@ function Login({setUser}) {
             'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-            "username": "Kane", "password": "Testpasswort"
+            "username": username, "password": password
             })
+            
         })
-        const data = await result.json()
-        console.log(data)
+       
+        console.log(result)
 
-        //postToken(data)
+        if (result.status === 401) {
+            alert("Falscher Benutzername oder falsches Passwort")
+        }
+        else {
+            const data = await result.json()
+            //console.log(result)
+            setToken(data)
+            setUser(username)
+    
+            //postToken(data)
+        }
     }
 
     return (
