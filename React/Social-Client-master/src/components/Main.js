@@ -8,13 +8,13 @@ import Post from './Post'
 import { useAppContext } from '../appContext'
 
 function Main({user}) {
-    //const {getPosts} = useAppContext()
+    const {getPosts} = useAppContext()
     const {token} = useAppContext()
     const {posts} = useAppContext()
 
-    //useEffect(() => {
-    //    setTimeout(() => getPosts(token), 2000)
-    //}, [getPosts, token]);
+    useEffect(() => {
+        setTimeout(() => getPosts(token), 2000)
+    }, [getPosts, token]);
 
     console.log(token)
    
