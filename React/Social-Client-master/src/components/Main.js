@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 import styled from 'styled-components'
 
@@ -8,8 +8,13 @@ import Post from './Post'
 import { useAppContext } from '../appContext'
 
 function Main({user}) {
-    const {posts} = useAppContext()
+    //const {getPosts} = useAppContext()
     const {token} = useAppContext()
+    const {posts} = useAppContext()
+
+    //useEffect(() => {
+    //    setTimeout(() => getPosts(token), 2000)
+    //}, [getPosts, token]);
 
     console.log(token)
    

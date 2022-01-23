@@ -8,31 +8,19 @@ import {useAppContext} from '../appContext'
 // Controlled Components
 
 function Input({user}) {
-    const {addPost} = useAppContext()
+    //const {addPost} = useAppContext()
+    const {token} = useAppContext()
     const [postText, setPostText] = useState()
     //const [user] = useState()
-
-    // useEffect(() => {
-    //     async function writePosts() {
-    //         // Abfrage der API (HTTP)
-    //         const owmURL = "http://127.0.0.1:8000/api2/posts"
-    //         const result = await fetch(owmURL, {
-    //             method: 'POST',
-    //             body: JSON.stringify({customer: "Kane"})
-    //         });
-    //         // Parsen der JSON Informationen (Erzeugt ein Promise Objekt)
-    //         const data = await result.json()
-    //         //console.log(data)
-    //         setPostText(data)
-    //     }
-    //     writePosts();
-    // }, [])
 
     function savePost() {
 //        addPost({author: "Demo", text: postText})
         fetch("http://127.0.0.1:8000/api2/posts", {
             method: 'POST',
-            headers:{'content-type': 'application/json'},
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': 'Bearer ' + token.access
+            },
             body: JSON.stringify({author: user, text: postText})
         });
         setPostText("")
