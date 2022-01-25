@@ -20,10 +20,13 @@ function usePosts() {
             //        'Authorization': 'Bearer ' + token.access
             //    }
             });
+            //if (result.ok) {
+                const data = await result.json()
+                //console.log(data)
+                setPosts(data)    
+            //}
             // Parsen der JSON Informationen (Erzeugt ein Promise Objekt)
-            const data = await result.json()
-            //console.log(data)
-            setPosts(data)
+            
         }
     //    setInterval(getPosts, 5000);
     //}, [])

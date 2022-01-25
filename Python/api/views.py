@@ -55,6 +55,8 @@ def api_view(request):
         # neuer Post
         # request.data
         new_post = Post(author=request.data["author"], text=request.data["text"])
+        #new_post = PostSerializer(data=request.data)
+        new_post.user = request.user
         new_post.save()
 
         #posts = Post.objects.all()
