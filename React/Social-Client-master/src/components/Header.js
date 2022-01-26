@@ -2,11 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 
 function Header() {
+
+    function refreshPage(){
+        window.location.reload();
+    } 
     
     return (
         <HeaderContainer>
             <TitleContainer>Header</TitleContainer>
-            <Button onclick="window.location.replace('http://localhost:3000')">Logout</Button>
+            <Button onClick={refreshPage}>Logout</Button>
         </HeaderContainer>
     )
 }

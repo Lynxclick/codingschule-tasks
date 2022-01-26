@@ -39,7 +39,7 @@ function Login({setUser}) {
     return (
         <LoginContainer>
             <Input placeholder='Benutzername' value={username} onChange={(e) => setUsername(e.target.value)}></Input>
-            <Input placeholder='Passwort' value={password} onChange={(e) => setPassword(e.target.value)}></Input>
+            <Input placeholder='Passwort' value={password} type="password" onChange={(e) => setPassword(e.target.value)}></Input>
             <Button onClick={handleLogin}>Rein da!</Button>
         </LoginContainer>
     )
