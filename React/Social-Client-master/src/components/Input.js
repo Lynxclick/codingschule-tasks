@@ -21,7 +21,7 @@ function Input({user}) {
                 'content-type': 'application/json',
                 'Authorization': 'Bearer ' + token.access
             },
-            body: JSON.stringify({author: user, text: postText})
+            body: JSON.stringify({text: postText})
         });
         setPostText("")
     }

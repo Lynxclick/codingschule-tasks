@@ -35,7 +35,7 @@ def index(request):
 
 
 def api_new(request, name):
-    new_post = Post(author=name, text=request.GET["text"])
+    new_post = Post(user=name, text=request.GET["text"])
     new_post.save()
 
     return redirect('/')
@@ -54,9 +54,10 @@ def api_view(request):
     if request.method == 'POST':
         # neuer Post
         # request.data
-        new_post = Post(author=request.data["author"], text=request.data["text"])
+        new_post = Post(user=request.user, text=request.data["text"])
         #new_post = PostSerializer(data=request.data)
-        new_post.user = request.user
+        #new_post.user = request.user
+        #new_post.is_valid(raise_exception=True)
         new_post.save()
 
         #posts = Post.objects.all()

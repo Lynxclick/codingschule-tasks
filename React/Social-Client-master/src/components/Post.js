@@ -6,7 +6,7 @@ function Post({post}) {
     return (
         <PostContainer>
             <PostInfos>
-                {post.author}
+                {post.user.username}
             </PostInfos>
             <PostText>
                 {post.text}
