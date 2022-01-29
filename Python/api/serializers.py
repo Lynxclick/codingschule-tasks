@@ -1,4 +1,4 @@
-from .models import Post, User
+from .models import Post, User, Like
 from rest_framework import serializers
 
 
@@ -12,8 +12,14 @@ class UserSerialzier(serializers.ModelSerializer):
         model = User
         fields = ["username"]
 
+class LikeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Like
+        fields = ["user"]
+
 class PostSerializer(serializers.ModelSerializer):
     user = UserSerialzier()
+    likes = serializers.StringRelatedField(many=True, read_only=True)
     class Meta:
         model = Post
         #fields = "__all__"

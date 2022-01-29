@@ -1,7 +1,23 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
+import { FaHeart } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 
-function Post({post}) {
+function Post({post, user}) {
+    const [likes, setLikes] = useState(false)
+
+//console.log(post.likes)
+
+
+    function LikePost () {
+       // console.log("Test")
+
+        if (likes === false)
+        {setLikes(true)}
+
+        else if (likes === true)
+        {setLikes(false)}
+}
 
     return (
         <PostContainer>
@@ -11,6 +27,10 @@ function Post({post}) {
             <PostText>
                 {post.text}
             </PostText>
+            <Like onClick={LikePost}>
+                {/*{likes ? <FaHeart/> : <FaRegHeart/>}*/}
+                {post.likes.includes(user) ? <FaHeart/> : <FaRegHeart/>}
+            </Like>
         </PostContainer>
     )
 }
@@ -34,4 +54,8 @@ const PostInfos = styled.div`
 
 const PostText = styled.div`
     font-size: 0.8rem;
+`
+
+const Like = styled.div`
+    color: red
 `

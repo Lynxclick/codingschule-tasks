@@ -8,6 +8,9 @@ from django.core import serializers
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import PostSerializer
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated, AllowAny
+
 
 
 # Create your views here.
@@ -47,6 +50,7 @@ def api_get(request):
     return HttpResponse(data, content_type="application/json")
 
 @api_view(['GET', 'POST'])
+@permission_classes([AllowAny])
 def api_view(request):
 
         

@@ -21,7 +21,7 @@ function Main({user}) {
     return  (
         <MainContainer>
             <Input user={user} />
-            {posts.map(post => <Post key={post.id} post={post} />)}
+            {posts.map(post => <Post key={post.id} post={post} user={user} />)}
         </MainContainer>
     )
 }
