@@ -30,7 +30,11 @@ function Post({post, user}) {
             <Like onClick={LikePost}>
                 {/*{likes ? <FaHeart/> : <FaRegHeart/>}*/}
                 {post.likes.includes(user) ? <FaHeart/> : <FaRegHeart/>}
+                {post.likes.length}
             </Like>
+            <div>
+                {post.likes.map(like => like)}
+            </div>
         </PostContainer>
     )
 }
