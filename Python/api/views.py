@@ -100,7 +100,7 @@ def api_view(request):
 
 def api_like(request):
     if request.method == 'POST':
-        new_like = Like(user=request.user)
+        new_like = Like(user=request.user, post=request.data)
         new_like.save()
         likes = Like.objects
         serializer = LikeSerializer(likes, many=True)
