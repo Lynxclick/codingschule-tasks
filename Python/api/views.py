@@ -2,12 +2,13 @@ from multiprocessing.sharedctypes import Value
 from django.shortcuts import render, redirect
 from .models import Customer
 from .models import Post
+from .models import Like
 #from api.models import Expense
 from django.http import HttpResponse
 from django.core import serializers
-from rest_framework.decorators import api_view
+#from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import PostSerializer
+from .serializers import LikeSerializer, PostSerializer
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
@@ -72,6 +73,42 @@ def api_view(request):
         #Alle Posts laden
         posts = Post.objects.order_by("-created_at")
         serializer = PostSerializer(posts, many=True)   
+        return Response(serializer.data)
+
+""" def api_like(request):
+    user = request.user
+    if request.method == 'POST':
+        post_id = request.POST.get('post_id')
+        post_obj = Post.objects.get(id=post_id)
+
+        if user in post_obj.liked.all():
+            post_obj.liked.remove(user)
+        else:
+            post_obj.liked.add(user)
+
+        like, created = Like.objects.get_or_create(user=user, post_id=post_id)
+
+        if not created:
+            if like.value == 'Like':
+                like.value = 'Unlike'
+            else:
+                like.value = 'Like'
+
+        like.save()
+    return redirect('posts:post-list') """
+
+
+def api_like(request):
+    if request.method == 'POST':
+        new_like = Like(user=request.user)
+        new_like.save()
+        likes = Like.objects
+        serializer = LikeSerializer(likes, many=True)
+        return Response(serializer.data)
+    
+    elif request.method == 'GET':
+        likes = Like.objects
+        serializer = LikeSerializer(likes, many=True)
         return Response(serializer.data)
 
 
