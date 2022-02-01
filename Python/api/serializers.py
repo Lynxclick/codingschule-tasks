@@ -13,6 +13,7 @@ class UserSerialzier(serializers.ModelSerializer):
         fields = ["username"]
 
 class LikeSerializer(serializers.ModelSerializer):
+    user = UserSerialzier()
     class Meta:
         model = Like
         fields = ["user"]
@@ -20,6 +21,7 @@ class LikeSerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     user = UserSerialzier()
     likes = serializers.StringRelatedField(many=True, read_only=True)
+    #likes = LikeSerializer(many=True, read_only=True)
     class Meta:
         model = Post
         #fields = "__all__"

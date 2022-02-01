@@ -5,6 +5,6 @@ urlpatterns = [
     path('', views.index),
     path('api/posts', views.api_get),
     path('new/<str:name>/', views.api_new),
-    path('api2/posts', views.api_view),
-    path('api/like', views.api_like),
+    path('api2/posts', views.post),
+    path('api2/like', views.like),
 ]

@@ -52,7 +52,7 @@ def api_get(request):
 
 @api_view(['GET', 'POST'])
 @permission_classes([AllowAny])
-def api_view(request):
+def post(request):
 
         
 
@@ -74,6 +74,28 @@ def api_view(request):
         posts = Post.objects.order_by("-created_at")
         serializer = PostSerializer(posts, many=True)   
         return Response(serializer.data)
+
+
+@api_view(["POST"])  
+@permission_classes([AllowAny])               # Hier nutzen wir zum Setzen und Löschen eine POST-Methode.
+def like(request):
+    post_id = 20          # request.data["postId"]
+    #print(post_id)
+    data = Like.objects.filter(post=post_id, user=1)
+    #if data.exists():
+    #    data.delete()
+    #else:
+   #     new_like = Like(post=post_id, user=1) # post Queryset und user
+    #    new_like.save()
+
+
+   # if request.method == 'POST':
+   #     new_like = LikeSerializer(data=request.data)
+   #     test = like.objects.filter(new_like.id)    
+
+
+
+    return Response()               # Gibt immer ein 200 OK zurück.
 
 """ def api_like(request):
     user = request.user
@@ -98,7 +120,7 @@ def api_view(request):
     return redirect('posts:post-list') """
 
 
-def api_like(request):
+""" def api_like(request):
     if request.method == 'POST':
         new_like = Like(user=request.user, post=request.data)
         new_like.save()
@@ -109,7 +131,7 @@ def api_like(request):
     elif request.method == 'GET':
         likes = Like.objects
         serializer = LikeSerializer(likes, many=True)
-        return Response(serializer.data)
+        return Response(serializer.data) """
 
 
 
