@@ -1,12 +1,16 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
-import { FaHeart } from "react-icons/fa";
-import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa"
+import { FaRegHeart } from "react-icons/fa"
+import {useAppContext} from '../appContext'
+
+
 
 function Post({post, user}) {
     const [likes, setLikes] = useState(false)
+    const {token} = useAppContext()
 
-        async function changeLike(token) {
+        async function changeLike() {
 
             const url = "http://127.0.0.1:8000/api2/like"
             const data = {post: post.id}
@@ -18,19 +22,34 @@ function Post({post, user}) {
                 },
                 method: "POST",
                 body: JSON.stringify(data)
+
+                
             })
+            //console.log(result)
+            if (result.ok) {
+                //const data = await result.json()
+                //console.log(data)
+                if (likes === false)
+                    {setLikes(true)}
+
+                else if (likes === true)
+                {setLikes(false)}
+            
+            }
         }
 
+        
 
-    function LikePost () {
+
+    // function LikePost () {
        // console.log("Test")
 
-        if (likes === false)
-        {setLikes(true)}
+    //    if (likes === false)
+    //    {setLikes(true)}
 
-        else if (likes === true)
-        {setLikes(false)}
-}
+    //    else if (likes === true)
+    //    {setLikes(false)}
+
 
     return (
         <PostContainer>
@@ -40,7 +59,7 @@ function Post({post, user}) {
             <PostText>
                 {post.text}
             </PostText>
-            <Like onClick={LikePost}>
+            <Like onClick={changeLike}>
                 {/*{likes ? <FaHeart/> : <FaRegHeart/>}*/}
                 {post.likes.includes(user) ? <FaHeart/> : <FaRegHeart/>}
                 {post.likes.length}

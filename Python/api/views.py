@@ -64,6 +64,7 @@ def post(request):
         #new_post.user = request.user
         #new_post.is_valid(raise_exception=True)
         new_post.save()
+        print(new_post)
 
         #posts = Post.objects.all()
         posts = Post.objects.order_by("-created_at")
@@ -85,8 +86,8 @@ def post(request):
 @api_view(["POST"])     # Hier nutzen wir zum Setzen und Löschen eine POST-Methode.
 @permission_classes([AllowAny])               
 def likeswitch(request):
-    userID = request.user
-    postID = request.data['id']
+    userID = request.user.id
+    postID = request.data['post']
     q = Like.objects.filter(post_id=postID, user_id=userID)
     if (q.exists()) :
         q.delete()
