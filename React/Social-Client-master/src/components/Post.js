@@ -6,7 +6,20 @@ import { FaRegHeart } from "react-icons/fa";
 function Post({post, user}) {
     const [likes, setLikes] = useState(false)
 
-//console.log(post.likes)
+        async function changeLike(token) {
+
+            const url = "http://127.0.0.1:8000/api2/like"
+            const data = {post: post.id}
+        
+            const result = await fetch (url, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token.access
+                },
+                method: "POST",
+                body: JSON.stringify(data)
+            })
+        }
 
 
     function LikePost () {

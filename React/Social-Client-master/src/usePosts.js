@@ -12,19 +12,19 @@ function usePosts() {
     const [posts, setPosts] = useState([])
 
     //useEffect(() => {
-        async function getPosts() {
+        async function getPosts(token) {
             // Abfrage der API (HTTP)
             const URL = "http://127.0.0.1:8000/api2/posts"
             const result = await fetch(URL, {
-            //    headers: {
-            //        'Authorization': 'Bearer ' + token.access
-            //    }
+                headers: {
+                    'Authorization': 'Bearer ' + token.access
+                }
             });
-            //if (result.ok) {
+            if (result.ok) {
                 const data = await result.json()
                 //console.log(data)
                 setPosts(data)    
-            //}
+            }
             // Parsen der JSON Informationen (Erzeugt ein Promise Objekt)
             
         }

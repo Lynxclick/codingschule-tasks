@@ -75,26 +75,27 @@ def post(request):
         serializer = PostSerializer(posts, many=True)   
         return Response(serializer.data)
 
+# DEMO
+#@api_view(["POST"])
+#def demo(request):
+#    print(request.data["test"])
+#    return Response(request.data)
+# DEMO
 
-@api_view(["POST"])  
-@permission_classes([AllowAny])               # Hier nutzen wir zum Setzen und Löschen eine POST-Methode.
-def like(request):
-    post_id = 20          # request.data["postId"]
-    #print(post_id)
-    data = Like.objects.filter(post=post_id, user=1)
-    #if data.exists():
-    #    data.delete()
-    #else:
-   #     new_like = Like(post=post_id, user=1) # post Queryset und user
-    #    new_like.save()
-
-
-   # if request.method == 'POST':
-   #     new_like = LikeSerializer(data=request.data)
-   #     test = like.objects.filter(new_like.id)    
-
-
-
+@api_view(["POST"])     # Hier nutzen wir zum Setzen und Löschen eine POST-Methode.
+@permission_classes([AllowAny])               
+def likeswitch(request):
+    userID = request.user
+    postID = request.data['id']
+    q = Like.objects.filter(post_id=postID, user_id=userID)
+    if (q.exists()) :
+        q.delete()
+        print("dislike")
+    else :
+        new_like = Like(post_id=postID, user_id=userID)
+        new_like.save()
+        print("like")
+    print(q)
     return Response()               # Gibt immer ein 200 OK zurück.
 
 """ def api_like(request):
