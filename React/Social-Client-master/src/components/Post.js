@@ -4,6 +4,17 @@ import { FaHeart } from "react-icons/fa"
 import { FaRegHeart } from "react-icons/fa"
 import {useAppContext} from '../appContext'
 
+//import Grid from '@mui/material/Grid';
+//import Button from '@mui/material/Button';
+//import Tooltip from '@mui/material/Tooltip';
+//import ClickAwayListener from '@mui/material/ClickAwayListener';
+import ReactTooltip from 'react-tooltip';
+
+import moment from "moment"
+import 'moment/locale/de'
+moment.locale('de')
+
+
 
 
 function Post({post, user}) {
@@ -62,10 +73,13 @@ function Post({post, user}) {
             <Like onClick={changeLike}>
                 {/*{likes ? <FaHeart/> : <FaRegHeart/>}*/}
                 {post.likes.includes(user) ? <FaHeart/> : <FaRegHeart/>}
-                {post.likes.length}
+                <ReactTooltip effect="solid" data-tip={post.likes.map(like => like)} />
             </Like>
             <div>
-                {post.likes.map(like => like)}
+                {post.likes.length} Personen gefällt das
+            </div>
+            <div>
+                {moment(post.created_at).startOf('day').fromNow()} gepostet
             </div>
         </PostContainer>
     )
