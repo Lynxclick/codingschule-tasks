@@ -76,7 +76,15 @@ function Post({post, user}) {
                 <ReactTooltip effect="solid" data-tip={post.likes.map(like => like)} />
             </Like>
             <div>
-                {post.likes.length} Personen gefällt das
+            {post.likes.includes(user) 
+            ?
+                <div>
+                    Dir und {post.likes.length-1} weiteren Personen gefällt das
+                </div>
+            :
+                <div>
+                    {post.likes.length} Personen gefällt das
+                </div>}
             </div>
             <div>
                 {moment(post.created_at).startOf('day').fromNow()} gepostet
