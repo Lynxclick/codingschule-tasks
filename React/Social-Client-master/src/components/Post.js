@@ -87,7 +87,7 @@ function Post({post, user}) {
                 </div>}
             </div>
             <div>
-                {moment(post.created_at).startOf('day').fromNow()} gepostet
+                {moment(post.created_at).fromNow()} gepostet
             </div>
         </PostContainer>
     )
