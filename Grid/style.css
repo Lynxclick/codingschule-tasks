@@ -1,0 +1,35 @@
+body {
+    margin: 0px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 200px 1fr 100px;
+    height: 100vh;
+
+}
+
+.header {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    background-color: green;
+}
+
+.main {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    background-color: yellow;
+}
+
+.sidebar {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    background-color: red;
+}
+
+.footer {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    background-color: blue;
+}
